@@ -58,6 +58,4 @@
         android:layout_toRightOf="@id/textSignUp"
         android:text="회원가입" />
 
-
-
 </RelativeLayout>
