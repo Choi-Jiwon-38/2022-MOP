@@ -30,6 +30,7 @@
             android:hint="사용할 ID를 입력해주세요." />
 
         <Button
+            android:id="@+id/buttonCheck"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
