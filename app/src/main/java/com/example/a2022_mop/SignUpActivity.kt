@@ -3,12 +3,15 @@ package com.example.a2022_mop
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONObject
+import java.util.regex.Pattern
+import java.util.regex.Pattern.matches
 
 class SignUpActivity: AppCompatActivity() {
     private lateinit var mEditID: EditText
@@ -64,19 +67,38 @@ class SignUpActivity: AppCompatActivity() {
                 && userAddress.isNotEmpty()
                 && userPhone.isNotEmpty()
             ) {
-                val info_json = JSONObject()
-                info_json.put("password", newPW)
-                info_json.put("name", userName)
-                info_json.put("address", userAddress)
-                info_json.put("phone", userPhone)
+                var flag = true
 
-                val info_string = info_json.toString()
+                val reg_phone = "01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$"
+                val pattern_phone = Pattern.compile(reg_phone)
 
-                editor.putString(newID, info_string)
-                editor.apply()
+                if (!pattern_phone.matcher(userPhone).find()) {
+                    Toast.makeText(this, "휴대폰 번호의 형식이 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
+                    flag = false
+                } else if (!matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", newPW)) {
+                    // 최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자 정규식
+                    Toast.makeText(this, "최소 8자, 하나 이상의 문자, 숫자, 특수문자를 포함해주세요.", Toast.LENGTH_SHORT).show()
+                    flag = false
+                } else if (!matches("^[가-힣]+\$", userName)) {
+                    Toast.makeText(this, "사용자의 이름은 한글로 작성해주세요.", Toast.LENGTH_SHORT).show()
+                    flag = false
+                }
 
-                Toast.makeText(this, "회원가입이 완료되었습니다!", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, LoginActivity::class.java))
+                if (flag) {
+                    val info_json = JSONObject()
+                    info_json.put("password", newPW)
+                    info_json.put("name", userName)
+                    info_json.put("address", userAddress)
+                    info_json.put("phone", userPhone)
+
+                    val info_string = info_json.toString()
+
+                    editor.putString(newID, info_string)
+                    editor.apply()
+
+                    Toast.makeText(this, "회원가입이 완료되었습니다!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
 
             } else {
                 if (!isAgree && (newID != availableID)) { // 중복체크 X / 개인정보 수집 동의 X
