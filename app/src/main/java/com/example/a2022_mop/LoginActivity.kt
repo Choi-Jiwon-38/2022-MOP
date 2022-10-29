@@ -30,7 +30,7 @@ class LoginActivity: AppCompatActivity() {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
         btnLogin.setOnClickListener {
-            if ( inputID.text.isNotEmpty() && inputPW.text.isNotEmpty() ) {
+            if ( inputID.text.isNotEmpty() || inputPW.text.isNotEmpty() ) {
                 var userInfo = prefs.getString(inputID.text.toString(), "none")
 
                 if (userInfo != "none") {
