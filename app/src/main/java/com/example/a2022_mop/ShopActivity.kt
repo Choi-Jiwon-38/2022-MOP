@@ -55,7 +55,7 @@ class ShopActivity: AppCompatActivity() {
             }
 
             binding.registration.setOnClickListener {
-                dataSet.add(Item(R.drawable.box, "아무거나", "아무거나 추가된 아이템이다"))
+                dataSet.add(Item(R.drawable.box, "고양이의 선물", "고양이가 상점에 두고 간 선물이다."))
                 recyclerAdapter!!.notifyDataSetChanged()
             }
         }
