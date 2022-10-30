@@ -1,8 +1,12 @@
 package com.example.a2022_mop
 
+
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a2022_mop.databinding.ActivityShopBinding
+import org.json.JSONObject
+
 
 
 class ShopActivity: AppCompatActivity() {
@@ -22,8 +26,32 @@ class ShopActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
         recyclerAdapter = ShopAdapter(dataSet)
         binding.rvShop.adapter = recyclerAdapter
+
+        binding.viewInfo.setOnClickListener {
+            if (intent.hasExtra("user info")) {
+                var info = JSONObject(intent.getStringExtra("user info"))
+                var userName: String = info.getString("name")
+                var userAddress: String = info.getString("address")
+                var userPhone: String = info.getString("phone")
+
+                AlertDialog.Builder(this)
+                    .setTitle("회원 정보")
+                    .setMessage("이름: $userName\n주소: $userAddress\n휴대전화: $userPhone\n")
+                    .setNegativeButton("확인") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("비회원인가요?")
+                    .setMessage("물품 등록은 회원 전용 기능입니다.\n회원가입 하시겠습니까?\n")
+                    .setPositiveButton("네", null)
+                    .setNegativeButton("아니오") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
+
+        }
     }
 
 }

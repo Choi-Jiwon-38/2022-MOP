@@ -11,6 +11,7 @@ import org.json.JSONObject
 
 class LoginActivity: AppCompatActivity() {
     private lateinit var btnLogin: Button
+    private lateinit var btnTextNonMember: TextView
     private lateinit var btnTextSignUp: TextView
     private lateinit var inputID: TextView
     private lateinit var inputPW: TextView
@@ -22,6 +23,7 @@ class LoginActivity: AppCompatActivity() {
         val prefs: SharedPreferences = getSharedPreferences("member_info", 0)
 
         btnLogin = findViewById(R.id.buttonLogin)
+        btnTextNonMember = findViewById(R.id.nonMember)
         btnTextSignUp = findViewById(R.id.toSignUp)
         inputID = findViewById(R.id.textID)
         inputPW = findViewById(R.id.textPW)
@@ -38,7 +40,9 @@ class LoginActivity: AppCompatActivity() {
                     if (inputPW.text.toString() != userInfo_json.getString("password")) {
                         Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
                     } else {
-                        startActivity(Intent(this, ShopActivity::class.java))
+                        val loginIntent = Intent(this, ShopActivity::class.java)
+                        loginIntent.putExtra("user info", userInfo)
+                        startActivity(loginIntent)
                     }
                 } else {
                     Toast.makeText(this, "아이디가 존재하지 않습니다.", Toast.LENGTH_SHORT).show()
@@ -46,6 +50,9 @@ class LoginActivity: AppCompatActivity() {
             } else {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
             }
+        }
+        btnTextNonMember.setOnClickListener {
+            startActivity(Intent(this, ShopActivity::class.java))
         }
     }
 
