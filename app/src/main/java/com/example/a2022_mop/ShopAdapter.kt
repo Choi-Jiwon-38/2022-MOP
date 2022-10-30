@@ -28,6 +28,7 @@ class ShopAdapter(private val dataSet: ArrayList<Item>): RecyclerView.Adapter<Sh
             binding.itemDescription.text = data.description
             binding.itemImg.setImageResource(data.src)
         }
+
     }
 }
 

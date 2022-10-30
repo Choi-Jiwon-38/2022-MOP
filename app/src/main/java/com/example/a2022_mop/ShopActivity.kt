@@ -53,11 +53,9 @@ class ShopActivity: AppCompatActivity() {
             }
 
             binding.registration.setOnClickListener {
-                dataSet.add(Item(R.drawable.red_portion, "아무거나", "아무거나 추가된 아이템이다"))
+                dataSet.add(Item(R.drawable.box, "아무거나", "아무거나 추가된 아이템이다"))
                 recyclerAdapter!!.notifyDataSetChanged()
             }
-
         }
     }
-
 }
