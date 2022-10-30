@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a2022_mop.databinding.RecyclerviewItemBinding
 
-class ShopAdapter(private val dataSet: Array<Item>): RecyclerView.Adapter<ShopAdapter.ViewHolder>() {
+class ShopAdapter(private val dataSet: ArrayList<Item>): RecyclerView.Adapter<ShopAdapter.ViewHolder>() {
     override fun onCreateViewHolder (
         parent: ViewGroup,
         viewType: Int
@@ -21,6 +21,7 @@ class ShopAdapter(private val dataSet: Array<Item>): RecyclerView.Adapter<ShopAd
     override fun getItemCount(): Int {
         return dataSet.size
     }
+
     class ViewHolder(private val binding: RecyclerviewItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Item) {
             binding.itemName.text = data.name

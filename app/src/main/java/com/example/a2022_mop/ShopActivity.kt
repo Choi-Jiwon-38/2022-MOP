@@ -13,7 +13,7 @@ class ShopActivity: AppCompatActivity() {
     private val binding by lazy { ActivityShopBinding.inflate(layoutInflater) }
     private var recyclerAdapter: ShopAdapter? = null
 
-    var dataSet = arrayOf(
+    var dataSet = arrayListOf(
         Item(R.drawable.red_portion, "빨간 포션", "붉은 약초로 만든 물약이다."),
         Item(R.drawable.orange_portion, "주황 포션", "붉은 약초의 농축 물약이다."),
         Item(R.drawable.white_portion, "하얀 포션", "붉은 약초의 고농축 물약이다."),
@@ -50,6 +50,11 @@ class ShopActivity: AppCompatActivity() {
                     .setPositiveButton("네", null)
                     .setNegativeButton("아니오") { dialog, _ -> dialog.dismiss() }
                     .show()
+            }
+
+            binding.registration.setOnClickListener {
+                dataSet.add(Item(R.drawable.red_portion, "아무거나", "아무거나 추가된 아이템이다"))
+                recyclerAdapter!!.notifyDataSetChanged()
             }
 
         }
