@@ -56,6 +56,16 @@
         android:layout_below="@id/buttonLogin"
         android:layout_marginHorizontal="10dp"
         android:layout_toRightOf="@id/textSignUp"
+        android:textColor="@color/purple_700"
         android:text="회원가입" />
+
+    <TextView
+        android:id="@+id/nonMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonLogin"
+        android:layout_toRightOf="@id/toSignUp"
+        android:textColor="@color/purple_700"
+        android:text="비회원으로 로그인" />
 
 </RelativeLayout>
