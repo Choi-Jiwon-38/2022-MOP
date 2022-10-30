@@ -26,6 +26,7 @@ class ShopActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.registration.isEnabled = intent.hasExtra("user info") // 데이터 유무에 따라 버튼 활성화, 비활성화
 
         recyclerAdapter = ShopAdapter(dataSet)
         binding.rvShop.adapter = recyclerAdapter
