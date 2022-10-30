@@ -1,6 +1,8 @@
 package com.example.a2022_mop
 
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +49,7 @@ class ShopActivity: AppCompatActivity() {
                 AlertDialog.Builder(this)
                     .setTitle("비회원인가요?")
                     .setMessage("물품 등록은 회원 전용 기능입니다.\n회원가입 하시겠습니까?\n")
-                    .setPositiveButton("네", null)
+                    .setPositiveButton("네") { dialog, _ -> startActivity(Intent(this, SignUpActivity::class.java)) }
                     .setNegativeButton("아니오") { dialog, _ -> dialog.dismiss() }
                     .show()
             }
