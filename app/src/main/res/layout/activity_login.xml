@@ -25,14 +25,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo_text"
-        android:hint="사용자 ID를 입력해주세요." />
+        android:hint="사용자 ID를 입력해주세요."
+        android:singleLine="true"
+        android:lines="1" />
 
     <EditText
         android:id="@+id/textPW"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textID"
-        android:hint="사용자 비밀번호를 입력해주세요." />
+        android:hint="사용자 비밀번호를 입력해주세요."
+        android:singleLine="true"
+        android:lines="1" />
 
     <Button
         android:id="@+id/buttonLogin"
