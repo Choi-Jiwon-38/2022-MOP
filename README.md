@@ -46,6 +46,7 @@
 
 ## 설치 방법 & Gradle (Installation & Gradle)
 ### 설치 (Installation)
+- GitHub Repository에 최상단에 위치한 `app-debug.apk`를 내려받아 설치가 가능합니다.
 - Github Repository를 Clone한 뒤, Android Studio IDE에서 Run 'app' 버튼 클릭하여 실행이 가능합니다.
 
 ### 빌드 시 유의사항 (Gradle)
