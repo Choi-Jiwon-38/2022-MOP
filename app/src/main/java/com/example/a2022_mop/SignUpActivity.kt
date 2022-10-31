@@ -60,7 +60,7 @@ class SignUpActivity: AppCompatActivity() {
 
             if (
                 isAgree
-                && (newID == availableID)
+                && (newID == availableID && availableID != "")
                 && newPW.isNotEmpty()
                 && userName.isNotEmpty()
                 && userAddress.isNotEmpty()
